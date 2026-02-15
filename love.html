@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Miss You ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  background: linear-gradient(-45deg, #ff758c, #ff7eb3, #ff4e8a, #ff8fb1);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
+  color:white;
+  padding:60px 20px;
+  overflow-x:hidden;
+}
+
+@keyframes gradientMove {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.container{
+  max-width:750px;
+  margin:auto;
+  padding:40px;
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.1);
+  border-radius:25px;
+  box-shadow:0 15px 50px rgba(0,0,0,0.3);
+  animation: fadeIn 2s ease forwards;
+  opacity:0;
+}
+
+@keyframes fadeIn{
+  to{opacity:1;}
+}
+
+h1{
+  font-size:2.5rem;
+  margin-bottom:30px;
+  text-align:center;
+}
+
+p{
+  font-size:1.1rem;
+  line-height:1.9;
+  margin-bottom:30px;
+  text-align:center;
+}
+
+.photo-container{
+  text-align:center;
+  margin:40px 0;
+}
+
+.photo-container img{
+  width:220px;
+  border-radius:20px;
+  box-shadow:0 0 15px rgba(255,255,255,0.6),
+             0 0 30px rgba(255,78,138,0.8);
+  animation: floatPhoto 4s ease-in-out infinite;
+}
+
+@keyframes floatPhoto{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+
+.glow{
+  text-align:center;
+  margin-top:30px;
+  font-size:1.8rem;
+  font-weight:700;
+  text-shadow:0 0 10px #fff,
+              0 0 20px #ff4e8a,
+              0 0 30px #ff4e8a;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.05);}
+}
+
+/* Floating hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:18px;
+  animation: floatUp linear infinite;
+  opacity:0.6;
+  z-index:0;
+}
+
+@keyframes floatUp{
+  from{ transform:translateY(0) scale(1); }
+  to{ transform:translateY(-110vh) scale(1.5); }
+}
+
+/* Music Button */
+.music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:rgba(255,255,255,0.2);
+  border:none;
+  padding:12px 16px;
+  border-radius:30px;
+  color:white;
+  font-size:14px;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+}
+</style>
+</head>
+<body>
+
+<!-- Background Music -->
+<audio id="bg-music" loop>
+  <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <h1>Hey My Love ❤️</h1>
+
+  <p>
+    I miss you more than I can truly explain. Every single day without you feels a little quieter, a little less bright, and a little less complete. I miss the sound of your laughter, the comfort of your voice, and the warmth of your presence beside me. Even the smallest moments we share mean everything to me.
+    <br><br>
+    Sometimes I catch myself smiling at memories of us — the way you look at me, the way you make everything feel safe and beautiful. Being away from you only makes my heart grow fonder and reminds me how deeply I care about you.
+    <br><br>
+    No distance could ever change what I feel for you. I carry you with me in my heart always, and I cannot wait until I can hold you again.
+  </p>
+
+  <div class="photo-container">
+    <img src="our-photo.jpg" alt="Our Favorite Memory ❤️">
+  </div>
+
+  <div class="glow">
+    I Miss You So Much 💖
+  </div>
+</div>
+
+<button class="music-btn" onclick="toggleMusic()">🎵 Play Music</button>
+
+<script>
+const music = document.getElementById("bg-music");
+music.volume = 0.4;
+
+// Try autoplay (works on some browsers)
+window.addEventListener("click", () => {
+  music.play();
+}, { once: true });
+
+function toggleMusic(){
+  if(music.paused){
+    music.play();
+    event.target.textContent = "⏸ Pause Music";
+  } else {
+    music.pause();
+    event.target.textContent = "🎵 Play Music";
+  }
+}
+
+// Floating hearts
+function createHeart(){
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (4 + Math.random()*4) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 9000);
+}
+setInterval(createHeart, 600);
+</script>
+
+</body>
+</html>
